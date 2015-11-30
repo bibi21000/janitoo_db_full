@@ -88,7 +88,6 @@ setup(
     """,
     url='http://bibi21000.gallet.info/',
     version = janitoo_version,
-    scripts=['src/scripts/jnt_dbman'],
     keywords = "core",
     zip_safe = False,
     include_package_data=True,
