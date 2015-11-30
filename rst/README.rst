@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.org/bibi21000/janitoo_db.svg?branch=master
-    :target: https://travis-ci.org/bibi21000/janitoo_db
+.. image:: https://travis-ci.org/bibi21000/janitoo_db_full.svg?branch=master
+    :target: https://travis-ci.org/bibi21000/janitoo_db_full
     :alt: Travis test status
 
 ===============
