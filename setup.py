@@ -96,12 +96,14 @@ setup(
     package_dir = { '': 'src' },
     install_requires=[
                      'janitoo_db == %s'%janitoo_version,
+                     'janitoo_dhcp',
                      'janitoo_layouts',
                      'janitoo_manager_proxy',
                     ],
     dependency_links = [
       'https://github.com/bibi21000/janitoo_db/archive/master.zip#egg=janitoo_db-%s'%janitoo_version,
       'https://github.com/bibi21000/janitoo_layouts/archive/master.zip#egg=janitoo_layouts',
+      'https://github.com/bibi21000/janitoo_dhcp/archive/master.zip#egg=janitoo_dhcp',
       'https://github.com/bibi21000/janitoo_manager_proxy/archive/master.zip#egg=janitoo_manager_proxy',
     ],
 )

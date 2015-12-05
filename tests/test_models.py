@@ -56,3 +56,10 @@ class TestModels(JNTTModels):
         layout = jntmodels.Layouts(key="key_layout", name="test_layout", description="test_description", layoutcategory=category)
         self.dbsession.merge(category, layout)
         self.dbsession.commit()
+
+    def test_101_lease(self):
+        now = datetime.datetime.now()
+        lease = jntmodels.Lease(add_ctrl="0001", add_node='0001', name="name", location="location", state='BOOT', cmd_classes=[], last_seen=now)
+        self.dbsession.merge(lease)
+        self.dbsession.commit()
+
