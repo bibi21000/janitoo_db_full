@@ -59,7 +59,7 @@ class TestModels(JNTTModels):
 
     def test_101_lease(self):
         now = datetime.datetime.now()
-        lease = jntmodels.Lease(add_ctrl="0001", add_node='0001', name="name", location="location", state='BOOT', cmd_classes=[], last_seen=now)
+        lease = jntmodels.Lease(add_ctrl="0001", add_node='0001', name="name", location="location", state='BOOT', last_seen=now)
         self.dbsession.merge(lease)
         self.dbsession.commit()
 
