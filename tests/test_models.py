@@ -43,7 +43,14 @@ import janitoo_db.models as jntmodels
 class TestModels(JNTTModels):
     """Test the models
     """
-    models_conf = "tests/data/janitoo_db.conf"
+    models_conf = ["tests/data/janitoo_db.conf", "tests/data/janitoo_db_mysql.conf", ]
+
+    def run_bar(n):
+        assert False, 'Test %d failed' % n
+
+    def test_bar():
+        for n in range(2):
+            yield run_bar, n
 
     def test_001_user(self):
         group = jntmodels.Group(name="test_group")
