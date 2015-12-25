@@ -40,18 +40,9 @@ from janitoo_db.base import Base, create_db_engine
 
 import janitoo_db.models as jntmodels
 
-class TestModels(JNTTModels):
+class CommonModels(object):
     """Test the models
     """
-    models_conf = ["tests/data/janitoo_db.conf", "tests/data/janitoo_db_mysql.conf", ]
-
-    def run_bar(n):
-        assert False, 'Test %d failed' % n
-
-    def test_bar():
-        for n in range(2):
-            yield run_bar, n
-
     def test_001_user(self):
         group = jntmodels.Group(name="test_group")
         user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
@@ -69,4 +60,14 @@ class TestModels(JNTTModels):
         lease = jntmodels.Lease(add_ctrl="0001", add_node='0001', name="name", location="location", state='BOOT', last_seen=now)
         self.dbsession.merge(lease)
         self.dbsession.commit()
+
+class TestModelsSQLite(JNTTModels, CommonModels):
+    """Test the models
+    """
+    models_conf = "tests/data/janitoo_db.conf"
+
+class TestModelsMySQL(JNTTModels, CommonModels):
+    """Test the models
+    """
+    models_conf = "tests/data/janitoo_db_mysql.conf"
 
