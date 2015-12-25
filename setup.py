@@ -96,6 +96,7 @@ setup(
     package_dir = { '': 'src' },
     install_requires=[
                      'janitoo_db == %s'%janitoo_version,
+                     "MySQLdb",
                      'janitoo_dhcp',
                      'janitoo_layouts',
                      'janitoo_manager_proxy',
