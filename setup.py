@@ -97,6 +97,7 @@ setup(
     install_requires=[
                      'janitoo_db == %s'%janitoo_version,
                      'MySQL-python',
+                     'psycopg2',
                      'janitoo_dhcp',
                      'janitoo_layouts',
                      'janitoo_manager_proxy',
