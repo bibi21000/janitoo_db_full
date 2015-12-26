@@ -1,2 +1,18 @@
 sudo mysql --host=localhost --user=root -e "CREATE DATABASE IF NOT EXISTS janitoo_db_full_tests;"
 sudo -u postgres createdb janitoo_db_full_tests
+mkdir submodules
+cd submodules
+git clone https://github.com/bibi21000/janitoo_db
+git clone https://github.com/bibi21000/janitoo_layouts
+git clone https://github.com/bibi21000/janitoo_dhcp
+git clone https://github.com/bibi21000/janitoo_manager
+mkdir tests
+cd tests
+ln -s ../janitoo_db/tests janitoo_db
+ln -s ../janitoo_layouts/tests janitoo_layouts
+ln -s ../janitoo_dhcp/tests janitoo_dhcp
+ln -s ../janitoo_manager/tests janitoo_manager
+ls -lisa
+cd ..
+ls -lisa
+cd ..

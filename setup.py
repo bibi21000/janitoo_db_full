@@ -100,7 +100,7 @@ setup(
                      'psycopg2',
                      'janitoo_dhcp',
                      'janitoo_layouts',
-                     'janitoo_manager_proxy',
+                     'janitoo_manager',
                     ],
     dependency_links = [
       'https://github.com/bibi21000/janitoo_db/archive/master.zip#egg=janitoo_db-%s'%janitoo_version,
