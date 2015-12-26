@@ -1,1 +1,1 @@
-lsb-release netcat-openbsd mysql-server mysql-client libmysqlclient-dev postgresql libpq-dev
+lsb-release netcat-openbsd mysql-server mysql-client libmysqlclient-dev postgresql libpq-dev psycopg2

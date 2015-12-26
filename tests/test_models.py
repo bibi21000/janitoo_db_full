@@ -71,7 +71,7 @@ class TestModelsMySQL(JNTTModels, CommonModels):
     """
     models_conf = "tests/data/janitoo_db_mysql.conf"
 
-class TestModelsPostgesql(JNTTModels, CommonModels):
+class TestModelsPostgresql(JNTTModels, CommonModels):
     """Test the models
     """
     models_conf = "tests/data/janitoo_db_postgres.conf"
