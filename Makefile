@@ -78,7 +78,7 @@ uninstall:
 
 deps:
 ifneq ('${BASHDEPS}','')
-	sudo bash BASHDEPS
+	sudo bash ${BASHDEPS}
 endif
 ifneq ('${DEBIANDEPS}','')
 	sudo apt-get install -y ${DEBIANDEPS}
