@@ -4,9 +4,9 @@
 db-deps:
 	mkdir db
 	cd db && git clone https://github.com/bibi21000/janitoo_mysql
-	cd db && ggit clone https://github.com/bibi21000/janitoo_mysql_client
-	cd db && ggit clone https://github.com/bibi21000/janitoo_postgresql
-	cd db && ggit clone https://github.com/bibi21000/janitoo_postgresql_client
+	cd db && git clone https://github.com/bibi21000/janitoo_mysql_client
+	cd db && git clone https://github.com/bibi21000/janitoo_postgresql
+	cd db && git clone https://github.com/bibi21000/janitoo_postgresql_client
 	sudo mysql --host=localhost --user=root -e "CREATE DATABASE IF NOT EXISTS janitoo_db_full_tests;"
 	sudo -u postgres createdb janitoo_db_full_tests
 	mkdir tmp
