@@ -13,7 +13,6 @@ db-deps:
 	cd tmp && git clone https://github.com/bibi21000/janitoo_layouts
 	cd tmp && git clone https://github.com/bibi21000/janitoo_dhcp
 	cd tmp && git clone https://github.com/bibi21000/janitoo_manager
-	mkdir tests
 	ln -s tmp/janitoo_db/tests /tests/janitoo_db
 	ln -s tmp/../janitoo_layouts/tests /tests/janitoo_layouts
 	ln -s tmp/../janitoo_dhcp/tests /tests/janitoo_dhcp
