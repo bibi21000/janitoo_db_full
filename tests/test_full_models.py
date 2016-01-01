@@ -39,7 +39,23 @@ from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
 
-class TestFullModels(JNTTFullModels, JNTTFullModelsCommon):
+class CommonModels(JNTTFullModelsCommon):
     """Test the full model
     """
     pass
+
+class TestModelsSQLite(JNTTFullModels, CommonModels):
+    """Test the models
+    """
+    models_conf = "tests/data/janitoo_db.conf"
+
+class TestModelsMySQL(JNTTFullModels, CommonModels):
+    """Test the models
+    """
+    models_conf = "tests/data/janitoo_db_mysql.conf"
+
+class TestModelsPostgresql(JNTTFullModels, CommonModels):
+    """Test the models
+    """
+    models_conf = "tests/data/janitoo_db_postgres.conf"
+
