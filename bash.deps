@@ -1,1 +1,2 @@
-echo "Ok"
+sudo mysql --host=localhost --user=root -e "CREATE DATABASE IF NOT EXISTS janitoo_db_full_tests;"
+sudo -u postgres createdb janitoo_db_full_tests
