@@ -28,7 +28,7 @@ import time, datetime
 import unittest
 import threading
 import logging
-from pkg_resources import iter_entry_points
+import pkg_resources
 
 from sqlalchemy.orm import sessionmaker, scoped_session
 
@@ -43,6 +43,13 @@ import janitoo_db.models as jntmodels
 class CommonModels(object):
     """Test the models
     """
+    janitoo_src = "/opt/janitoo/src"
+    def collect_models(self):
+        res = {'janitoo' : 'janitoo_db.models'}
+        for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
+            res[entrypoint.name] = entrypoint.module_name
+        return res
+
     def test_001_user(self):
         group = jntmodels.Group(name="test_group")
         user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
@@ -61,18 +68,38 @@ class CommonModels(object):
         self.dbsession.merge(lease)
         self.dbsession.commit()
 
+    def test_901_all(self):
+        self.wipTest()
+        models = self.collect_models()
+        import sys
+        from os.path import dirname, basename, isfile
+        import glob
+        modules = []
+        for model in models:
+            test_dir = os.path.join(self.janitoo_src, model, 'tests')
+            print test_dir
+            sys.path.append(test_dir) # this is where your python file exists
+            modules = [ basename(f)[:-3] for f in glob.glob(test_dir+"/*.py") if isfile(f) and not basename(f).startswith('_')]
+            print "Load tests from %s" % modules
+            for module in modules:
+                #~ __import__(module, locals(), globals())
+
+                __import__(module, locals(), globals())
+
+        eee
+
 class TestModelsSQLite(JNTTModels, CommonModels):
     """Test the models
     """
     models_conf = "tests/data/janitoo_db.conf"
 
-class TestModelsMySQL(JNTTModels, CommonModels):
-    """Test the models
-    """
-    models_conf = "tests/data/janitoo_db_mysql.conf"
-
-class TestModelsPostgresql(JNTTModels, CommonModels):
-    """Test the models
-    """
-    models_conf = "tests/data/janitoo_db_postgres.conf"
+#~ class TestModelsMySQL(JNTTModels, CommonModels):
+    #~ """Test the models
+    #~ """
+    #~ models_conf = "tests/data/janitoo_db_mysql.conf"
+#~
+#~ class TestModelsPostgresql(JNTTModels, CommonModels):
+    #~ """Test the models
+    #~ """
+    #~ models_conf = "tests/data/janitoo_db_postgres.conf"
 
