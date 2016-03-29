@@ -54,18 +54,21 @@ class CommonModels(object):
         return res
 
     def test_001_user(self):
+        self.wipTest()
         group = jntmodels.Group(name="test_group")
         user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
         self.dbsession.merge(group, user)
         self.dbsession.commit()
 
     def test_051_layouts(self):
+        self.wipTest()
         category = jntmodels.LayoutsCategories(key="key_cat", name="test_cat", description="test_description")
         layout = jntmodels.Layouts(key="key_layout", name="test_layout", description="test_description", layoutcategory=category)
         self.dbsession.merge(category, layout)
         self.dbsession.commit()
 
     def test_101_lease(self):
+        self.wipTest()
         now = datetime.datetime.now()
         lease = jntmodels.Lease(add_ctrl="0001", add_node='0001', name="name", location="location", state='BOOT', last_seen=now)
         self.dbsession.merge(lease)
