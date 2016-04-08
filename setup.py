@@ -87,7 +87,9 @@ setup(
     packages = find_packages('src', exclude=["scripts", "docs", "config"]),
     package_dir = { '': 'src' },
     install_requires=[
-                     'janitoo_db == %s'%janitoo_version,
+                     'janitoo',
+                     'janitoo_factory',
+                     'janitoo_db',
                      'MySQL-python',
                      'psycopg2',
                      'janitoo_dhcp',
@@ -95,7 +97,9 @@ setup(
                      'janitoo_manager',
                     ],
     dependency_links = [
-      'https://github.com/bibi21000/janitoo_db/archive/master.zip#egg=janitoo_db-%s'%janitoo_version,
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo',
+      'https://github.com/bibi21000/janitoo_factory/archive/master.zip#egg=janitoo_factory',
+      'https://github.com/bibi21000/janitoo_db/archive/master.zip#egg=janitoo_db',
       'https://github.com/bibi21000/janitoo_layouts/archive/master.zip#egg=janitoo_layouts',
       'https://github.com/bibi21000/janitoo_dhcp/archive/master.zip#egg=janitoo_dhcp',
       'https://github.com/bibi21000/janitoo_manager/archive/master.zip#egg=janitoo_manager',
