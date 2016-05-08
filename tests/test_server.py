@@ -47,12 +47,8 @@ from janitoo.utils import JanitooNotImplemented, JanitooException
 from janitoo.options import JNTOptions
 from janitoo_db.server import JNTDBServer
 
-class CommonServer():
+class CommonServer(JNTTDBServerCommon):
     """Test the models
-    """
-
-class TestDbSerser(JNTTDBServer, CommonServer, JNTTDBServerCommon):
-    """Test the server
     """
     loglevel = logging.DEBUG
     path = '/tmp/janitoo_test'
@@ -61,3 +57,8 @@ class TestDbSerser(JNTTDBServer, CommonServer, JNTTDBServerCommon):
     server_class = JNTDBServer
     server_conf = "tests/data/janitoo_db.conf"
     hadds = [HADD%(2218,0)]
+
+class TestDbSerser(JNTTDBServer, CommonServer, ):
+    """Test the server
+    """
+    pass
