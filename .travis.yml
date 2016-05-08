@@ -16,6 +16,13 @@ install:
   - make db-deps
   - make travis-deps
   - python setup.py install
+before_script:
+  - mysql -e 'create database janitoo_tests;'
+  #~ - psql -c 'create database janitoo_tests;' -U postgres
+  - createdb -U postgres --encoding utf-8 --template template0 janitoo_tests
+  - psql -U postgres --command "CREATE USER janitoo WITH PASSWORD 'janitoo';" janitoo_tests
+  - psql -U postgres --command "GRANT ALL PRIVILEGES ON DATABASE janitoo_tests TO janitoo;" janitoo_tests
+
 # command to run tests
 script:
  - make tests
