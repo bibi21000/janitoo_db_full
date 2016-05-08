@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Unittests for models.
+"""Unittests for db Server.
 """
 __license__ = """
     This file is part of Janitoo.
@@ -31,24 +31,33 @@ import time, datetime
 import unittest
 import threading
 import logging
+import time
 from pkg_resources import iter_entry_points
 
-from sqlalchemy.orm import sessionmaker, scoped_session
+from janitoo_nosetests.dbserver import JNTTDBServer, JNTTDBServerCommon
+from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
 
-from janitoo_nosetests.models import JNTTFullModels, JNTTFullModelsCommon
-from janitoo_nosetests.models import JNTTModels
-
+from janitoo.utils import json_dumps, json_loads
+from janitoo.utils import HADD_SEP, HADD
+from janitoo.utils import TOPIC_HEARTBEAT
+from janitoo.utils import TOPIC_NODES, TOPIC_NODES_REPLY, TOPIC_NODES_REQUEST
+from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
+from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
+from janitoo.utils import JanitooNotImplemented, JanitooException
 from janitoo.options import JNTOptions
-from janitoo_db.base import Base, create_db_engine
-from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
+from janitoo_db.server import JNTDBServer
 
-class ModelsFullCommon(JNTTFullModelsCommon):
-    """Test the full model
-    """
-    pass
-
-class TestFullModels(JNTTFullModels, ModelsFullCommon):
+class CommonServer():
     """Test the models
     """
-    models_conf = "tests/data/janitoo_db.conf"
 
+class TestDbSerser(JNTTDBServer, CommonServer, JNTTDBServerCommon):
+    """Test the server
+    """
+    loglevel = logging.DEBUG
+    path = '/tmp/janitoo_test'
+    broker_user = 'toto'
+    broker_password = 'toto'
+    server_class = JNTDBServer
+    server_conf = "tests/data/janitoo_db.conf"
+    hadds = [HADD%(2218,0)]
