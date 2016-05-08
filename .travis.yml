@@ -1,5 +1,7 @@
 language: python
 sudo: required
+env:
+- JANITOO_DOCKER=1
 python:
   - "2.7"
   # does not have headers provided, please ask https://launchpad.net/~pypy/+archive/ppa
@@ -17,6 +19,7 @@ install:
 # command to run tests
 script:
  - make tests
+ - make docker_tests
  #publish results on coveralls
 after_success:
  - coveralls

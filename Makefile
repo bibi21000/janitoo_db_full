@@ -149,6 +149,20 @@ travis-deps:
 	git clone https://github.com/bibi21000/janitoo_mosquitto.git
 	make -C janitoo_mosquitto deps
 	make -C janitoo_mosquitto develop
+	git clone https://github.com/bibi21000/janitoo_mysql.git
+	make -C janitoo_mysql deps
+	make -C janitoo_mysql develop
+	git clone https://github.com/bibi21000/janitoo_mysql_client.git
+	make -C janitoo_mysql_client deps
+	make -C janitoo_mysql_client develop
+	make -C janitoo_mysql docker-deps
+	git clone https://github.com/bibi21000/janitoo_postgresql.git
+	make -C janitoo_postgresql deps
+	make -C janitoo_postgresql develop
+	git clone https://github.com/bibi21000/janitoo_postgresql_client.git
+	make -C janitoo_postgresql_client deps
+	make -C janitoo_postgresql_client develop
+	make -C janitoo_postgresql docker-deps
 	pip install git+git://github.com/bibi21000/janitoo_nosetests@master
 	pip install git+git://github.com/bibi21000/janitoo_nosetests_flask@master
 	pip install coveralls
