@@ -35,7 +35,7 @@ import mock
 import logging
 
 from janitoo_nosetests import JNTTBase
-from janitoo_nosetests.server import JNTTDockerServerCommon, JNTTDockerServer, jntt_docker_dbserver
+from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer, jntt_docker_dbserver
 from janitoo_nosetests.models import jntt_docker_fullmodels, jntt_docker_models
 
 from janitoo.runner import Runner, jnt_parse_args
