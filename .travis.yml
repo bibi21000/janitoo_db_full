@@ -21,7 +21,7 @@ install:
   - python setup.py install
 before_script:
   - mysql -e 'create database janitoo_tests;'
-  #~ - psql -c 'create database janitoo_tests;' -U postgres
+  - mysqladmin -u root password janitoo
   - createdb -U postgres --encoding utf-8 --template template0 janitoo_tests
   - psql -U postgres --command "CREATE USER janitoo WITH PASSWORD 'janitoo';" janitoo_tests
   - psql -U postgres --command "GRANT ALL PRIVILEGES ON DATABASE janitoo_tests TO janitoo;" janitoo_tests
