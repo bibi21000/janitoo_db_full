@@ -52,6 +52,10 @@ from test_models import CommonModels
 #Launch ModelsCommon tests for every supported database
 jntt_docker_models(__name__, CommonModels)
 
+from test_migrate import CommonModels as MigrateCommon
+#Launch MigrateCommon tests for every supported database
+jntt_docker_models(__name__, MigrateCommon)
+
 from test_server import CommonServer
 #Launch CommonServer tests for every supported database
 jntt_docker_dbserver(__name__, CommonServer)

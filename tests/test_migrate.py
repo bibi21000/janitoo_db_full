@@ -65,18 +65,7 @@ class CommonModels(object):
         config.downgrade()
         self.assertFalse(config.checkdb())
 
-class TestMigrateSQLite(JNTTBase, CommonModels):
+class TestMigrate(JNTTBase, CommonModels):
     """Test the models
     """
     models_conf = "tests/data/janitoo_db.conf"
-
-class TestMigrateMySQL(JNTTBase, CommonModels):
-    """Test the models
-    """
-    models_conf = "tests/data/janitoo_db_mysql.conf"
-
-class TestMigratePostgresql(JNTTBase, CommonModels):
-    """Test the models
-    """
-    models_conf = "tests/data/janitoo_db_postgres.conf"
-
