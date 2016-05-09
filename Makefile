@@ -161,6 +161,7 @@ travis-deps:
 	#~ git clone https://github.com/bibi21000/janitoo_postgresql_client.git
 	#~ make -C janitoo_postgresql_client deps
 	#~ make -C janitoo_postgresql_client develop
+	mysqladmin -u root password janitoo
 	pip install git+git://github.com/bibi21000/janitoo_nosetests@master
 	pip install git+git://github.com/bibi21000/janitoo_nosetests_flask@master
 	pip install coveralls
