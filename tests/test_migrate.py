@@ -46,6 +46,7 @@ import janitoo_db.models as jntmodels
 class CommonModels(object):
     """Test the dbman
     """
+    models_conf = "tests/data/janitoo_db.conf"
 
     def test_101_versiondb(self):
         config = JNTConfig(conf_file=self.models_conf)
@@ -68,4 +69,4 @@ class CommonModels(object):
 class TestMigrate(JNTTBase, CommonModels):
     """Test the models
     """
-    models_conf = "tests/data/janitoo_db.conf"
+    pass
