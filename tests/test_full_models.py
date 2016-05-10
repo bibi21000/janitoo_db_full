@@ -37,18 +37,16 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 from janitoo_nosetests.models import JNTTFullModels, JNTTFullModelsCommon
 from janitoo_nosetests.models import JNTTModels
+from janitoo_nosetests.models import jntt_docker_fullmodels, jntt_docker_models
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
 
-class ModelsFullCommon(JNTTFullModelsCommon):
+class CommonFullModels(JNTTFullModelsCommon):
     """Test the full model
-    """
-    pass
-
-class TestFullModels(JNTTFullModels, ModelsFullCommon):
-    """Test the models
     """
     models_conf = "tests/data/janitoo_db.conf"
 
+#Launch ModelsCommon tests for every supported database
+jntt_docker_fullmodels(__name__, CommonFullModels)

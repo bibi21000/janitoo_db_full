@@ -37,6 +37,12 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 from janitoo_nosetests import JNTTBase
 from janitoo_nosetests.models import JNTTModels,JNTTModelsCommon
+from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer, jntt_docker_dbserver
+from janitoo_nosetests.models import jntt_docker_fullmodels, jntt_docker_models
+
+from janitoo.runner import Runner, jnt_parse_args
+from janitoo.server import JNTServer
+from janitoo.utils import HADD_SEP, HADD
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
@@ -46,6 +52,7 @@ import janitoo_db.models as jntmodels
 class CommonModels(JNTTModelsCommon):
     """Test the models
     """
+    models_conf = "tests/data/janitoo_db.conf"
 
     def collect_models(self):
         res = {'janitoo' : 'janitoo_db.models'}
@@ -54,27 +61,23 @@ class CommonModels(JNTTModelsCommon):
         return res
 
     def test_001_user(self):
-        self.wipTest()
         group = jntmodels.Group(name="test_group")
         user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
         self.dbsession.merge(group, user)
         self.dbsession.commit()
 
     def test_051_layouts(self):
-        self.wipTest()
         category = jntmodels.LayoutsCategories(key="key_cat", name="test_cat", description="test_description")
         layout = jntmodels.Layouts(key="key_layout", name="test_layout", description="test_description", layoutcategory=category)
         self.dbsession.merge(category, layout)
         self.dbsession.commit()
 
     def test_101_lease(self):
-        self.wipTest()
         now = datetime.datetime.now()
         lease = jntmodels.Lease(add_ctrl="0001", add_node='0001', name="name", location="location", state='BOOT', last_seen=now)
         self.dbsession.merge(lease)
         self.dbsession.commit()
 
-class TestModels(JNTTModels, CommonModels):
-    """Test the models
-    """
-    models_conf = "tests/data/janitoo_db.conf"
+#Launch ModelsCommon tests for every supported database
+jntt_docker_models(__name__, CommonModels)
+
