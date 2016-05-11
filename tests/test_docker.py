@@ -46,7 +46,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 from test_full_models import CommonFullModels
 #Launch CommonFullModels tests for every supported database
-jntt_docker_fullmodels(__name__, CommonFullModels)
+jntt_docker_fullmodels(__name__, CommonFullModels, prefix='DbFull')
 
 from test_models import CommonModels
 #Launch ModelsCommon tests for every supported database
@@ -58,4 +58,4 @@ jntt_docker_models(__name__, MigrateCommon, prefix='DbFullMigrate')
 
 from test_server import CommonServer
 #Launch CommonServer tests for every supported database
-jntt_docker_dbserver(__name__, CommonServer)
+jntt_docker_dbserver(__name__, CommonServer, prefix='DbFull')
