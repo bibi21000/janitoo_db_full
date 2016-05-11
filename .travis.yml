@@ -28,7 +28,6 @@ before_script:
 # command to run tests
 script:
  - make tests
- - make docker-tests
  #publish results on coveralls
 after_success:
  - coveralls
