@@ -77,7 +77,3 @@ class CommonModels(JNTTModelsCommon):
         lease = jntmodels.Lease(add_ctrl="0001", add_node='0001', name="name", location="location", state='BOOT', last_seen=now)
         self.dbsession.merge(lease)
         self.dbsession.commit()
-
-#Launch ModelsCommon tests for every supported database
-jntt_docker_models(__name__, CommonModels)
-

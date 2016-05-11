@@ -47,6 +47,3 @@ class CommonFullModels(JNTTFullModelsCommon):
     """Test the full model
     """
     models_conf = "tests/data/janitoo_db.conf"
-
-#Launch ModelsCommon tests for every supported database
-jntt_docker_fullmodels(__name__, CommonFullModels)
