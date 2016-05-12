@@ -58,7 +58,36 @@ class CommonServer():
     server_conf = "tests/data/janitoo_db.conf"
     hadds = [HADD%(2218,0)]
 
-class TestDbSerser(JNTTDBServerCommon, CommonServer, JNTTDBServer):
+    def test_040_server_start_no_error_in_log(self):
+        self.wipTest()
+        self.start()
+        time.sleep(5)
+        if self.server_section:
+            print "Look for thread %s"%self.server_section
+            thread = self.server.find_thread(self.server_section)
+            self.assertNotEqual(thread, None)
+            self.assertIsInstance(thread, JNTBusThread)
+        self.waitHeartbeatNodes(hadds=self.hadds)
+        time.sleep(self.longdelay)
+        self.assertNotInLogfile('^ERROR ')
+        #~ self.assertInLogfile('Start the server')
+        self.assertInLogfile('Connected to broker')
+        self.assertInLogfile('Found heartbeats in timeout')
+        print "Reload server"
+        self.server.reload()
+        time.sleep(5)
+        self.waitHeartbeatNodes(hadds=self.hadds)
+        time.sleep(self.shortdelay)
+        self.assertNotInLogfile('^ERROR ')
+        #~ self.assertInLogfile('Reload the server')
+        print "Reload threads"
+        self.server.reload_threads()
+        time.sleep(5)
+        self.waitHeartbeatNodes(hadds=self.hadds)
+        time.sleep(self.shortdelay)
+        self.assertNotInLogfile('^ERROR ')
+
+class TestDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
     """Test the server
     """
     pass
