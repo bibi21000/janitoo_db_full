@@ -1,0 +1,10 @@
+janitoo_db_full package
+=======================
+
+Module contents
+---------------
+
+.. automodule:: janitoo_db_full
+    :members:
+    :undoc-members:
+    :show-inheritance:
