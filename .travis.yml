@@ -18,7 +18,7 @@ install:
   - make directories
   - make db-deps
   - make travis-deps
-  - python setup.py install
+  - make install
 before_script:
   - mysql -e 'create database janitoo_tests;'
   - mysqladmin -u root password janitoo
