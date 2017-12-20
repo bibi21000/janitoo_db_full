@@ -1,6 +1,8 @@
 # Makefile for local
 #
 
+NOSECOVER     = --cover-package=${MODULENAME},janitoo_db,janitoo_dhcp,janitoo_layouts,janitoo_manager --with-coverage --cover-inclusive --cover-html --cover-html-dir=${BUILDDIR}/docs/html/tools/coverage --with-html --html-file=${BUILDDIR}/docs/html/tools/nosetests/index.html
+
 db-deps:
 	mkdir db
 	cd db && git clone https://github.com/bibi21000/janitoo_mysql
