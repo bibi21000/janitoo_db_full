@@ -90,7 +90,7 @@ setup(
                      'janitoo',
                      'janitoo_factory',
                      'janitoo_db',
-                     'MySQL-python',
+                     'PyMySQL',
                      'psycopg2',
                      'janitoo_dhcp',
                      'janitoo_layouts',
