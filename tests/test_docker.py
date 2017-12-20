@@ -48,9 +48,9 @@ from .test_full_models import CommonFullModels
 #Launch CommonFullModels tests for every supported database
 jntt_docker_fullmodels(__name__, CommonFullModels, prefix='DbFull')
 
-from .test_models import CommonModels
+from .test_models import ModelsCommon
 #Launch ModelsCommon tests for every supported database
-jntt_docker_models(__name__, CommonModels, prefix='DbFull')
+jntt_docker_models(__name__, ModelsCommon, prefix='DbFull')
 
 from .test_migrate import CommonModels as MigrateCommon
 #Launch MigrateCommon tests for every supported database
