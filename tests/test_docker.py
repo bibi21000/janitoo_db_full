@@ -44,18 +44,18 @@ from janitoo.utils import HADD_SEP, HADD
 
 sys.path.insert(0, os.path.abspath('.'))
 
-from test_full_models import CommonFullModels
+from .test_full_models import CommonFullModels
 #Launch CommonFullModels tests for every supported database
 jntt_docker_fullmodels(__name__, CommonFullModels, prefix='DbFull')
 
-from test_models import CommonModels
+from .test_models import CommonModels
 #Launch ModelsCommon tests for every supported database
 jntt_docker_models(__name__, CommonModels, prefix='DbFull')
 
-from test_migrate import CommonModels as MigrateCommon
+from .test_migrate import CommonModels as MigrateCommon
 #Launch MigrateCommon tests for every supported database
 jntt_docker_models(__name__, MigrateCommon, prefix='DbFullMigrate')
 
-from test_server import CommonServer
+from .test_server import CommonServer
 #Launch CommonServer tests for every supported database
 jntt_docker_dbserver(__name__, CommonServer, prefix='DbFull')
