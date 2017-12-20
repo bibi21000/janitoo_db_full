@@ -84,5 +84,7 @@ class TestModels(JNTTModels, ModelsCommon):
     """
     models_conf = "tests/data/janitoo_db.conf"
 
-JNTTBase.skipCITest()
 jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[('Postgresql',{'dbconf':'postgresql://janitoo:janitoo@localhost/janitoo_tests'})])
+
+JNTTBase.onlyCITest()
+jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[('Mysql',{'dbconf':'mysql://root:janitoo@localhost/janitoo_tests'})])
