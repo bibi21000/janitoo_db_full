@@ -35,7 +35,7 @@ import pkg_resources
 
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-from janitoo_nosetests import JNTTBase
+from janitoo_nosetests import JNTTBase, DBCONFS
 from janitoo_nosetests.models import JNTTModels,JNTTModelsCommon, jntt_models
 from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer, jntt_docker_dbserver
 
@@ -84,7 +84,7 @@ class TestModels(JNTTModels, ModelsCommon):
     """
     models_conf = "tests/data/janitoo_db.conf"
 
-jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[('Postgresql',{'dbconf':'postgresql://janitoo:janitoo@localhost/janitoo_tests'})])
+jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[DBCONFS[2]])
 
 JNTTBase.onlyCITest()
-jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[('Mysql',{'dbconf':'mysql://root:janitoo@localhost/janitoo_tests'})])
+jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[DBCONFS[1]])

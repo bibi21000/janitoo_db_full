@@ -55,11 +55,9 @@ class CommonServer():
     broker_user = 'toto'
     broker_password = 'toto'
     server_class = JNTDBServer
-    server_conf = "tests/data/janitoo_db.conf"
     hadds = [HADD%(2218,0)]
 
     def test_040_server_start_no_error_in_log(self):
-        self.wipTest()
         self.start()
         time.sleep(5)
         if self.server_section:
@@ -87,7 +85,12 @@ class CommonServer():
         time.sleep(self.shortdelay)
         self.assertNotInLogfile('^ERROR ')
 
-class TestDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
+class TestMysqlDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
     """Test the server
     """
-    pass
+    server_conf = "tests/data/janitoo_db_mysql.conf"
+
+class TestPostgresqlDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
+    """Test the server
+    """
+    server_conf = "tests/data/janitoo_db_postgres.conf"
