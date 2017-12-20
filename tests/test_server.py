@@ -56,6 +56,7 @@ class CommonServer():
     broker_password = 'toto'
     server_class = JNTDBServer
     hadds = [HADD%(2218,0)]
+    server_conf = "tests/data/janitoo_db.conf"
 
     def test_040_server_start_no_error_in_log(self):
         self.start()
