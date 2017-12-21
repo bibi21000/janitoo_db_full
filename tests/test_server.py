@@ -34,6 +34,7 @@ import logging
 import time
 from pkg_resources import iter_entry_points
 
+from janitoo_nosetests import JNTTBase, DBCONFS
 from janitoo_nosetests.dbserver import JNTTDBServer, JNTTDBServerCommon
 from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
 
@@ -86,12 +87,20 @@ class CommonServer():
         time.sleep(self.shortdelay)
         self.assertNotInLogfile('^ERROR ')
 
-class TestMysqlDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
+class TestSqliteDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
     """Test the server
     """
-    server_conf = "tests/data/janitoo_db_mysql.conf"
 
 class TestPostgresqlDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
     """Test the server
     """
     server_conf = "tests/data/janitoo_db_postgres.conf"
+
+class TestMysqlDbSerser(CommonServer, JNTTDBServerCommon, JNTTDBServer):
+    """Test the server
+    """
+    server_conf = "tests/data/janitoo_db_mysql.conf"
+
+    def setUp(self):
+        self.onlyCITest()
+        JNTTDBServer.setUp(self)

@@ -79,12 +79,12 @@ class ModelsCommon(JNTTModelsCommon):
         self.dbsession.merge(lease)
         self.dbsession.commit()
 
-class TestModels(JNTTModels, ModelsCommon):
-    """Test the models
-    """
-    models_conf = "tests/data/janitoo_db.conf"
+#~ class TestSqliteModels(JNTTModels, ModelsCommon):
+    #~ """Test the models
+    #~ """
+    #~ models_conf = "tests/data/janitoo_db.conf"
 
-jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[DBCONFS[2]])
+jntt_models(__name__, ModelsCommon, prefix='SQliteDb', dbs=[DBCONFS[0]])
+jntt_models(__name__, ModelsCommon, prefix='MysqlDb', dbs=[DBCONFS[1]], skipcond=JNTTBase.onlyCITest)
+jntt_models(__name__, ModelsCommon, prefix='PoqtgresqlDb', dbs=[DBCONFS[2]])
 
-JNTTBase.onlyCITest()
-jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[DBCONFS[1]])
