@@ -1,7 +1,7 @@
 language: python
 sudo: required
-env:
-- JANITOO_DOCKER=1
+#~ env:
+#~ - JANITOO_DOCKER=1
 services:
   - mysql
   - postgresql
