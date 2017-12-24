@@ -44,6 +44,8 @@ from janitoo.utils import HADD_SEP, HADD
 
 sys.path.insert(0, os.path.abspath('.'))
 
+JNTTBase.onlyDockerTest()
+
 from .test_full_models import CommonFullModels
 #Launch CommonFullModels tests for every supported database
 jntt_docker_fullmodels(__name__, CommonFullModels, prefix='DbFull')
